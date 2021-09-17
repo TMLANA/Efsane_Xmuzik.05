@@ -1,7 +1,7 @@
 {
-    "name": "EfsaneX Music",
+    "name": "Efsane XMusic",
     "logo": "https://telegra.ph/file/73cbefa8401982900fe81.jpg",
-    "description": "EfsaneX Music allow you to stream music trought the telegram voice chat feature.",
+    "description": "Efsane XMüzik, telegram sesli sohbet özelliğine trought müzik akışı yapmanızı sağlar.",
     "keywords": ["music", "voice chat", "telegram"],
     "repository": "https://github.com/Mehmetbaba55/EfsaneXMusic",
     "stack": "container",
@@ -27,7 +27,7 @@
         "BOT_IMG": {
             "description": "Fotoğraftan canlıya.",
             "required": false,
-            "value": "https://telegra.ph/file/5f5f8e412644c47cc836a.jpg"
+            "value": "https://telegra.ph/file/cd0b87484429704c7b935.png"
         },
         "ASSISTANT_NAME": {
             "description": "kullanmadan yardımcı kullanıcı adınızı doldurun @",
