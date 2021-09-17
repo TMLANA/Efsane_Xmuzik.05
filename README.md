@@ -1,6 +1,6 @@
 <h2 align="centre">🎵 Efsane X Music 🎵
 
-### Telegram sesli sohbet grou'da müzik çalmak için müzik botu
+### Telegram sesli sohbet group'da müzik çalmak için müzik botu
 
 <h3>Requirements 📝</h3>
 
