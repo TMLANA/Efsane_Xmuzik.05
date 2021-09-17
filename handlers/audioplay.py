@@ -1,6 +1,6 @@
-# this module i created only for playing music using audio file, idk, because the audio player on play.py module not working
-# so this is the alternative
-# audio play function
+# Bu modül yalnızca ses dosyası, IDK kullanarak müzik çalmak için oluşturdum, çünkü play.py modülündeki ses çalar çalışmıyor
+# bu yüzden alternatif budur 
+# ses çalma işlevi 
 
 from os import path
 
@@ -20,9 +20,9 @@ from helpers.gets import get_url, get_file_name
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-@Client.on_message(command("stream") & other_filters)
+@Client.on_message(command(mp3") & other_filters)
 @errors
-async def stream(_, message: Message):
+async def mp3(_, message: Message):
 
     lel = await message.reply("🔁 **memproses** musik...")
     sender_id = message.from_user.id
