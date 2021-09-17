@@ -69,7 +69,7 @@ async def bye(client, message):
                 await lol.edit(f"Asistan ayrılıyor... Left: {left} chats. Failed: {failed} chats.")
             except:
                 failed=failed+1
-                await lol.edit(f"Asistab ayrılıyor... Left: {left} chats. Failed: {failed} chats.")
+                await lol.edit(f"Asistan ayrılıyor... Left: {left} chats. Failed: {failed} chats.")
             await asyncio.sleep(0.7)
         await client.send_message(message.chat.id, f"Left {left} chats. Failed {failed} chats.")
 
