@@ -1,13 +1,13 @@
 {
-    "name": "KennedyX Music",
+    "name": "EfsaneX Music",
     "logo": "https://telegra.ph/file/73cbefa8401982900fe81.jpg",
-    "description": "KennedyX Music allow you to stream music trought the telegram voice chat feature.",
+    "description": "EfsaneX Music allow you to stream music trought the telegram voice chat feature.",
     "keywords": ["music", "voice chat", "telegram"],
     "repository": "https://github.com/Mehmetbaba55/EfsaneXMusic",
     "stack": "container",
     "env": {
         "SESSION_NAME": {
-            "description": "isi dengan string Pyrogram (P)",
+            "description": "Pyrogram dizeleriyle doldurma (P)",
             "required": true
         },
         "BOT_TOKEN": {
@@ -15,34 +15,34 @@
             "required": true
         },
         "BOT_NAME": {
-            "description": "nama bot musik mu.",
+            "description": "müzik botunuzun adı.",
             "required": false,
             "value": ""
         },
         "BOT_USERNAME": {
-            "description": "isi dengan username bot musikmu tanpa menggunakan @",
+            "description": "kullanmadan müzik botu kullanıcı adınızı doldurun @",
             "required": true,
-            "value": "KenzxMusicBot"
+            "value": "Mp3dinleme_Bot"
         },
         "BOT_IMG": {
-            "description": "Photo untuk alive.",
+            "description": "Fotoğraftan canlıya.",
             "required": false,
             "value": "https://telegra.ph/file/5f5f8e412644c47cc836a.jpg"
         },
         "ASSISTANT_NAME": {
-            "description": "isi dengan username asistenmu tanpa menggunakan @",
+            "description": "kullanmadan yardımcı kullanıcı adınızı doldurun @",
             "required": true,
-            "value": "kennedyassistant"
+            "value": "SesMusicAsistan"
         },
         "BG_IMAGE": {
-            "description": "isi dengan link telegraph background mu",
+            "description": "telgraf arka plan bağlantınızla doldurma",
             "required": false,
-            "value": "https://telegra.ph/file/0f6f8a8a5ad69fe5ecf3d.png"
+            "value": "https://telegra.ph/file/cd0b87484429704c7b935.png"
         },
         "OWNER_NAME": {
-            "description": "isi dengan username mu tanpa menggunakan @",
+            "description": "kullanıcı adınızı kullanmadan doldurun @",
             "required": false,
-            "value": "xgothboi"
+            "value": ""
         },
         "API_ID": {
             "description": "APP ID mu dari my.telegram.org",
@@ -53,28 +53,28 @@
             "required": true
         },
         "SUDO_USERS": {
-            "description": "id untuk daftar anggota sudo (pisahkan dengan spasi).",
+            "description": "sudo üyelerinin listesi için kimlik (Boşluklara göre ayır).",
             "required": true
         },
         "DURATION_LIMIT": {
-            "description": "max durasi untuk video yang diunduh (dalam menit).",
+            "description": "indirilen video için en fazla süre (dakikalar içinde).",
             "required": true,
             "value": "15"
         },
         "PMPERMIT": {
-            "description": "pm-permit untuk asisten.",
+            "description": "Asistanlar için PM izni.",
             "required": false,
             "value": "ENABLE"
         },
         "UPDATES_CHANNEL": {
-            "description": "isi dengan username channel kamu, jika tidak punya lewati saja",
+            "description": "atlamanız yoksa kanal kullanıcı adınızla doldurma",
             "required": false,
-            "value": "KennedyProject"
+            "value": ""
         },
         "GROUP_SUPPORT": {
-            "description": "isi dengan username grup kamu, jika tidak punya skip saja",
+            "description": "yalnızca atlamanız yoksa, grup kullanıcı adınızla doldurun",
             "required": false,
-            "value": "kenbotsupport"
+            "value": "Sohbetdestek"
         }
     },
     "buildpacks": [
