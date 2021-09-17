@@ -212,7 +212,7 @@ async def hfmm(_, message):
     if status == "ON" or status == "on" or status == "On":
         lel = await message.reply("`processing...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**pemutar musik sudah aktif.**")
+            await lel.edit("**Müzik çalar aktif.**")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
@@ -340,7 +340,7 @@ async def m_cb(b, cb):
             ) or (
                 callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
-                await cb.answer("sesli sohbet bağlı değil veya zaten yürütleniyor", show_alert=True)
+                await cb.answer("sesli sohbet bağlı değil veya zaten yürütülüyor", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
             await cb.answer("Müzik devam ediyor!")
@@ -448,7 +448,7 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>💡 Beni kullanmak için, yönetici olmak zorundayım.**izin** :\n\n» ❌ __Menghapus pesan__\n» ❌ __Memblokir pengguna__\n» ❌ __Menambahkan anggota__\n» ❌ __Mengatur obrolan suara__\n» ❌ __Tambahkan admin baru__\n\nKemudian ketik /reload</b>",
+                        "<b>💡 Beni kullanmak için, yönetici olmak zorundayım.**izin** :\n\n» ❌ __İleti silme__\n» ❌ __Kullanıcıları engelleme__\n» ❌ __Menambahkan anggota__\n» ❌ __Sesli sohbetleri ayarlama__\n» ❌ __Yeni yönetici ekleme__\n\nSonra yazın /reload</b>",
                     )
                     return
                 try:
@@ -464,15 +464,15 @@ async def play(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>⛑ Flood Wait Error ⛑\n{user.first_name} tidak dapat bergabung dengan grup Anda karena banyaknya permintaan bergabung untuk userbot! Pastikan pengguna tidak dibanned dalam grup."
-                        f"\n\nAtau tambahkan @{ASSISTANT_NAME} secara manual ke Grup Anda dan coba lagi</b>",
+                        f"<b>⛑ Flood Wait Error ⛑\n{user.first_name} userbot için katılma isteği nedeniyle grubunuza katılamıyor! Kullanıcıların gruplar halinde yasaklanmamasını sağlama."
+                        f"\n\nVeya ekleyin @{ASSISTANT_NAME} el ile Grubunuza bakın ve yeniden deneyin</b>",
                     )
     try:
         await USER.get_chat(chid)
         # lmoa = await client.get_chat_member(chid,wew)
     except:
         await lel.edit(
-            f"<i>{user.first_name} telah terblokir dari grup, minta admin untuk /unban @{ASSISTANT_NAME} atau bisa lakukan /userbotjoin</i>"
+            f"<i>{user.first_name} gruptan engellendiyse, yöneticiden /unban @Sesmusicasistan Ya da sen yapabilirsin. /userbotjoin</i>"
         )
         return
     text_links=None
@@ -504,13 +504,13 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❎ **Süresi daha fazla olan şarkılar** `{DURATION_LIMIT}` **menit tidak dapat diputar!**"
+                f"❎ **Süresi daha fazla olan şarkılar** `{DURATION_LIMIT}` **dakika çalınamaz!**"
             )
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="closed")
+                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Sohbetdestek "),
+                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
                 ],
             ]
         )
@@ -529,7 +529,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Şarkı Aranıyor** 🔎")
+        await lel.edit("🔎 **Lütfen Bekleyiniz** 🔎")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -545,7 +545,7 @@ async def play(_, message: Message):
             views = results[0]["views"]
         except Exception as e:
             await lel.edit(
-                "**❎ lagu tidak ditemukan**, mohon tulis judul dengan benar\n\n» **Contoh :** `/play happier olivia rodrigo`"
+                "**❎ Şarkı bulunamadı**, Lütfen başlığı doğru yazın \n\n» **Örnek:** `/play Ebru Yaşar gibi`"
             )
             print(str(e))
             return
@@ -555,7 +555,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Sohbetdestek"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="closed")
+                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
                 ],
             ]
         )
@@ -581,7 +581,7 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:24]}...](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ ⏲️ **Süre** - {results[j]['duration']}\n"
+                toxxt += f" ├ ⏳ **Süre** - {results[j]['duration']}\n"
                 toxxt += f" └ 👀 **Görüntülenme** - {results[j]['views']}\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
@@ -617,7 +617,7 @@ async def play(_, message: Message):
                 views = results[0]["views"]
             except Exception as e:
                 await lel.edit(
-                    "**❎ lagu tidak ditemukan**, mohon tulis judul dengan benar\n\n» **Contoh :** `/play happier olivia rodrigo`"
+                    "**❎ Şarkı bulunamadı**, Lütfen başlığı doğru yazın\n\n» **Örnek :** `/play Ebru Yaşar gibi`"
                 )
                 print(str(e))
                 return
@@ -626,8 +626,8 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="closed")
+                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Kurtadamoyunuu"),
+                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
                 ],
             ]
         )
@@ -661,7 +661,7 @@ async def play(_, message: Message):
         try:
             callsmusic.pytgcalls.join_group_call(chat_id, file_path)
         except:
-            message.reply("**voice chat group not active, can't play a song.**")
+            message.reply("**sesli sohbet grubu etkin değil , şarkı çalamıyorum.**")
             return
         await message.reply_photo(
             photo="final.png",
@@ -690,7 +690,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("Şarkı çalmak isteyen sen değilsin.!", show_alert=True)
         return
-    await cb.message.edit("🔁 **Sesli sohbette Müzik Çalacağım**")
+    await cb.message.edit("🔁 **Müzik Hazırlanıyor**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -711,7 +711,7 @@ async def lol_cb(b, cb):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
-             await cb.message.edit(f"❎ Lagu dengan durasi lebih dari `{DURATION_LIMIT}` menit tidak dapat diputar.")
+             await cb.message.edit(f"❎ Süresi daha fazla olan şarkılar `{DURATION_LIMIT}` dakika çalınamaz.")
              return
     except:
         pass
@@ -728,7 +728,7 @@ async def lol_cb(b, cb):
             [
                 [
                     InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Sohbetdestek"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="closed")
+                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
                 ],
             ]
         )
