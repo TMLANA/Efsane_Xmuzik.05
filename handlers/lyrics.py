@@ -8,9 +8,9 @@ from helpers.filters import command
 
 
 @Client.on_message(command(["lirik", f"lirik@{BOT_USERNAME}"]))
-async def lirik_, message):
+async def lirik(_, message):
     try:
-        if len(message.command) < 2:
+        if len(message.command) < 2: 
             await message.reply_text("`Şarkının adını seviyorum bir blok !!!`")
             return
         query = message.text.split(None, 1)[1]
