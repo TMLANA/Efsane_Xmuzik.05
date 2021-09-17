@@ -33,7 +33,7 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""<b>🕊️ **Hallo {message.from_user.mention}** \n
-**__[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Adalah sebuah bot yang dirancang untuk memutar musik di obrola suara !__**
+**__[EfsaneMusicBot](https://t.me/Mp3dinleme_Bot) Telegram sesli sohbetinde müzik çalmak için tasarlanmış bir bottur!__**
 **__Untuk melihat beberapa perintah dalam penggunaan bot bisa klik » /help__**
 </b>""",
         reply_markup=InlineKeyboardMarkup(
