@@ -11,14 +11,14 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-@app.on_message(command(["search", f"search@{BOT_USERNAME}"]))
-async def ytsearch(_, message: Message):
+@app.on_message(command(["link", f"search@{BOT_USERNAME}"]))
+async def ytlink(_, message: Message):
     try:
         if len(message.command) < 2:
-            await message.reply_text("/search needs an argument!")
+            await message.reply_text("/aramanın bağımsız değişkene ihtiyacı var!")
             return
         query = message.text.split(None, 1)[1]
-        m = await message.reply_text("🔎 **searching**")
+        m = await message.reply_text("🔎 **araştırıcı**")
         results = YoutubeSearch(query, max_results=5).to_dict()
         i = 0
         text = ""
