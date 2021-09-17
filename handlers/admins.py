@@ -95,3 +95,36 @@ async def skip(_, message: Message):
     if not qeue:
         return
     await message.reply_text(f"⏭️ **__Şarkıyı bir sonraki kuyruğa atla__**")
+
+
+@Client.on_message(filters.command("auth"))
+@authorized_users_only
+async def authenticate(client, message):
+    global admins
+    if not message.reply_to_message:
+        await message.reply("✘ Kullanıcıyı Yetkilendirmek için mesaja cevap verin!")
+        return
+    if message.reply_to_message.from_user.id not in admins[message.chat.id]:
+        new_admins = admins[message.chat.id]
+        new_admins.append(message.reply_to_message.from_user.id)
+        admins[message.chat.id] = new_admins
+        await message.reply("kullanıcı yetkili.")
+    else:
+        await message.reply("✔ Kullanıcı Zaten Yetkilendirildi!")
+
+
+@Client.on_message(filters.command("deauth"))
+@authorized_users_only
+async def deautenticate(client, message):
+    global admins
+    if not message.reply_to_message:
+        await message.reply("✘ Kullanıcıyı yetkisizleştirmek için mesaj atınız!")
+        return
+    if message.reply_to_message.from_user.id in admins[message.chat.id]:
+        new_admins = admins[message.chat.id]
+        new_admins.remove(message.reply_to_message.from_user.id)
+        admins[message.chat.id] = new_admins
+        await message.reply("kullanıcı yetkisi")
+    else:
+        await message.reply("✔ Kullanıcı Zaten Yetkilendirildi!")
+
