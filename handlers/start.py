@@ -43,10 +43,10 @@ async def start_(client: Client, message: Message):
                         "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ​ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/Sohbetdestek"
                     ),
                     InlineKeyboardButton(
-                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}")
+                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/kurtadamoyunuu")
                 ],[
                     InlineKeyboardButton(
                         "sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ​", url="https://github.com/Mehmetbaba55/EfsaneXMusic"
@@ -65,22 +65,22 @@ async def start(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     delta_ping = time() - start
     await message.reply_text(
-        f"""<b>👋🏻 **Hello {message.from_user.mention()}!**</b>
+        f"""<b>👋🏻 **Merhaba {message.from_user.mention()}!**</b>
 
-✅ **Saya aktif dan siap memutar musik!
-• Speed : {delta_ping * 1000:.3f} ms
-• Start time: `{START_TIME_ISO}`
-• Klik pada tombol » 📚 **Perintah** dan lihat semua perintah bot!
+✅ **Aktifim ve müzik çalmaya hazırım.!
+• Hız : {delta_ping * 1000:.3f} ms
+• Başlangıç saati: `{START_TIME_ISO}`
+• Düğmeye tıklayın » 📚 **Komut** ve tüm bot komutlarına bakın!
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "👥 Support", url=f"https://t.me/{GROUP_SUPPORT}")
+                        "👥 Support", url=f"https://t.me/Sohbetdestek")
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Perintah", callback_data="cbcmds"
+                        "📚 Komut", callback_data="cbcmds"
                     )
                 ]
             ]
@@ -91,15 +91,15 @@ async def start(client: Client, message: Message):
 @Client.on_message(command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def help(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>👋🏻 **Hello** {message.from_user.mention()}</b>
-**Please press the button below to read the explanation and see the list of available commands !**
+        f"""<b>👋🏻 **Merhaba** {message.from_user.mention()}</b>
+**Açıklamayı okumak ve kullanılabilir komutların listesini görmek için lütfen aşağıdaki düğmeye basın!**
 
-💡 Bot by @{UPDATES_CHANNEL}""",
+💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text=" HOW TO USE ME", callback_data=f"cbguide"
+                        text=" BENI NASIL KULLANARSIN?", callback_data=f"cbguide"
                     )
                 ]
             ]
@@ -109,11 +109,11 @@ async def help(client: Client, message: Message):
 @Client.on_message(command("help") & filters.private & ~filters.edited)
 async def help_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>💡 **Hello {message.from_user.mention} welcome to the help menu !**</b>
+        f"""<b>💡 **Merhaba {message.from_user.mention} yardım menüsüne hoş geldiniz!**</b>
 
-**__In this menu you can open several available command menus, in each command menu there is also a brief explanation of each command__**
+**__Bu menüde birkaç kullanılabilir komut menüsü açabilirsiniz, her komut menüsünde her komutun kısa bir açıklaması da vardır__**
 
-💡 Bot by @{UPDATES_CHANNEL}""",
+💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -134,7 +134,7 @@ async def ping_pong(client: Client, message: Message):
     uptime = await _human_time_duration(int(uptime_sec))
     delta_ping = time() - start
     await message.reply_text(
-        f"**Pong !!** {delta_ping * 1000:.3f} ms\n"
-        f"• **uptime:** `{uptime}`\n"
-        f"• **start time:** `{START_TIME_ISO}`"
+        f"**Pong!!** {delta_ping * 1000:.3f} ms\n"
+        f"• **Uptime:** `{uptime}`\n"
+        f"• **başlangıç saati:** `{START_TIME_ISO}`"
     )
