@@ -258,7 +258,7 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**❎ sedang tidak memutar lagu**")
+            await cb.message.edit("**❎ Şarkıyı çalmıyorum**")
         temp = []
         for t in queue:
             temp.append(t)
@@ -529,7 +529,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❎ **lagu dengan durasi lebih dari** `{DURATION_LIMIT}` **menit tidak dapat diputar!**"
+                f"❎ **Süresi daha fazla olan şarkılar** `{DURATION_LIMIT}` **menit tidak dapat diputar!**"
             )
         keyboard = InlineKeyboardMarkup(
             [
@@ -606,8 +606,8 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:24]}...](https://youtube.com{results[j]['url_suffix']})\n"
-                toxxt += f" ├ ⏰ **Duration** - {results[j]['duration']}\n"
-                toxxt += f" └ 👁 **Viewer** - {results[j]['views']}\n\n"
+                toxxt += f" ├ ⏰ **Süre** - {results[j]['duration']}\n"
+                toxxt += f" └ 👁 **Görüntüleyici** - {results[j]['views']}\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
@@ -620,7 +620,7 @@ async def play(_, message: Message):
                         InlineKeyboardButton("4️⃣", callback_data=f'plll 3|{query}|{user_id}'),
                         InlineKeyboardButton("5️⃣", callback_data=f'plll 4|{query}|{user_id}')
                     ],
-                    [InlineKeyboardButton(text="🗑 Tutup", callback_data="cls")],
+                    [InlineKeyboardButton(text="❌ Kapat", callback_data="cls")],
                 ]
             )
             await lel.edit(toxxt,reply_markup=keyboard,disable_web_page_preview=True)
