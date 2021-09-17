@@ -109,26 +109,26 @@ async def generate_cover(title, thumbnail):
     os.remove("background.png")
 
 
-@Client.on_message(command(["playlist", f"playlist@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["playlist", f"playlist@Efsanestar_bot"]) & filters.group & ~filters.edited)
 async def playlist(client, message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("**nothing in streaming!**")
+        await message.reply_text("**Akışta hiçbir şey yok!**")
     temp = []
     for t in queue:
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Lagu Yang Sedang dimainkan** di {}".format(message.chat.title)
+    msg = "**Çalınan Şarkılar** di {}".format(message.chat.title)
     msg += "\n• "+ now_playing
-    msg += "\n• Atas permintaan "+by
+    msg += "\n• İstek üzerine "+by
     temp.pop(0)
     if temp:
         msg += "\n\n"
-        msg += "**Antrian Lagu**"
+        msg += "**Şarkı Sırası**"
         for song in temp:
             name = song[0]
             usr = song[1].mention(style="md")
@@ -139,13 +139,13 @@ async def playlist(client, message):
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "Pengaturan dari **{}**".format(chat.title)
+        stats = "Ayarlar**{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "Volume: {}%\n".format(vol)
-            stats += "Lagu dalam antrian: `{}`\n".format(len(que))
-            stats += "Sedang memutar lagu: **{}**\n".format(queue[0][0])
-            stats += "Atas permintaan: {}".format(queue[0][1].mention)
+            stats += "Ses: {}%\n".format(vol)
+            stats += "Sırada şarkılar: `{}`\n".format(len(que))
+            stats += "Şarkı çalma: **{}**\n".format(queue[0][0])
+            stats += "İstek üzerine: {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -159,34 +159,22 @@ def r_ply(type_):
         [
             [
                 InlineKeyboardButton("⏹", "leave"),
-                InlineKeyboardButton("⏸", "pause"),
+                InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 Çalma listesi", "playlist"),
+                InlineKeyboardButton("📖 PlayList", "playlist"),
             ],
             [       
-                InlineKeyboardButton("❌ Kapat", "cls")
+                InlineKeyboardButton("🗑 Kapat", "cls")
             ]        
         ]
     )
     return mar
 
 
-@Client.on_callback_query(
-    filters.regex(pattern=r"^(closed)$")
-)
-@cb_admin_check
-async def bt_cls(b, cb):
-    type_ = cb.matches[0].group(1)
-    cb.message.chat.id
-    if type_ == "closed":
-        await cb.answer("Closed Thumbnail")
-        await cb.message.delete()
-
-
-@Client.on_message(command(["player", f"player@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@Client.on_message(command(["player", f"player@Efsanestar_bot"]) & filters.group & ~filters.edited)
 @authorized_users_only
 async def settings(client, message):
     playing = None
@@ -201,11 +189,11 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("**mohon nyalakan dulu obrolan suaranya.**")
+        await message.reply("**Please turn on the voice chat first.**")
 
 
 @Client.on_message(
-    command(["musicplayer", f"musicplayer@{BOT_USERNAME}"]) & ~filters.edited & ~filters.bot & ~filters.private
+    command("musicplayer") & ~filters.edited & ~filters.bot & ~filters.private
 )
 @authorized_users_only
 async def hfmm(_, message):
@@ -216,34 +204,34 @@ async def hfmm(_, message):
         return
     if len(message.command) != 2:
         await message.reply_text(
-            "**saya hanya mengenali** `/musicplayer on` **dan** `/musicplayer off`"
+            "**Sadece biliyorum. ** `/müzik çalar açık` **ve** `/Müzik çalar kapalı`"
         )
         return
     status = message.text.split(None, 1)[1]
     message.chat.id
     if status == "ON" or status == "on" or status == "On":
-        lel = await message.reply("`processing...`")
+        lel = await message.reply("`İşleme Alıdm...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**pemutar musik sudah aktif.**")
+            await lel.edit("**Müzik çalar zaten etkinleştirildi.**")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **pemutar musik telah diaktifkan untuk grup ini.** {message.chat.id}"
+            f"✅ **Müzik çalar bu sohbette etkinleştirildi.** {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("`memproses...`")
+        lel = await message.reply("`Processing...`")
         
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**pemutar musik sudah tidak aktif.**")
+            await lel.edit("**Müzik çalar zaten devre dışı.**")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"✅ **pemutar musik telah dimatikan untuk grup ini.** {message.chat.id}"
+            f"✅ **Müzik çalar bu sohbette devre dışı bırakıldı.** {message.chat.id}"
         )
     else:
         await message.reply_text(
-            "**saya hanya mengenali** `/musicplayer on` **dan** `/musicplayer off`"
+            "**Sadece biliyorum.** `/müzik çalar açık` **ve** `/müzik çalar kapalı`"
         )
 
 
@@ -258,19 +246,19 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**❎ Şarkıyı çalmıyorum**")
+            await cb.message.edit("**Hiçbir şey oynamıyor.❗**")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Now playing** in {}".format(cb.message.chat.title)
+        msg = "**Şimdi yürütülen** in {}".format(cb.message.chat.title)
         msg += "\n• " + now_playing
-        msg += "\n• Req by " + by
+        msg += "\n• Komut ile " + by
         temp.pop(0)
         if temp:
             msg += "\n\n"
-            msg += "**Antrian Lagu**"
+            msg += "**Şarkı Sırası**"
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
@@ -280,7 +268,7 @@ async def p_cb(b, cb):
 
 
 @Client.on_callback_query(
-    filters.regex(pattern=r"^(play|pause|skip|leave|pause|resume|menu|cls)$")
+    filters.regex(pattern=r"^(play|pause|skip|leave|puse|resume|menu|cls)$")
 )
 @cb_admin_check
 async def m_cb(b, cb):
@@ -304,11 +292,11 @@ async def m_cb(b, cb):
                 ) or (
                     callsmusic.pytgcalls.active_calls[chet_id] == "paused"
                 ):
-            await cb.answer("assistant tidak bergabung ke obrolan suara!", show_alert=True)
+            await cb.answer("Assistant is not connected to voice chat!", show_alert=True)
         else:
             callsmusic.pytgcalls.pause_stream(chet_id)
             
-            await cb.answer("musik dijeda!")
+            await cb.answer("Müzik duraklatıldı!")
             await cb.message.edit(updated_stats(m_chat, qeue), reply_markup=r_ply("play"))
                 
     elif type_ == "play":       
@@ -317,33 +305,33 @@ async def m_cb(b, cb):
             ) or (
                 callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
-                await cb.answer("assistant tidak bergabung ke obrolan suara!", show_alert=True)
+                await cb.answer("Assistant is not connected to voice chat!", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
-            await cb.answer("music resumed!")
+            await cb.answer("Müzik devam etti!")
             await cb.message.edit(updated_stats(m_chat, qeue), reply_markup=r_ply("pause"))
 
     elif type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:   
-            await cb.message.edit("sedang tidak memutar lagu!")
+            await cb.message.edit("Akışta hiçbir şey yok!")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Lagu Yang Sedang dimainkan** di {}".format(cb.message.chat.title)
+        msg = "**Çalınan Şarkılar** di {}".format(cb.message.chat.title)
         msg += "\n• "+ now_playing
-        msg += "\n• Atas permintaan "+by
+        msg += "\n• İstek üzerine "+by
         temp.pop(0)
         if temp:
              msg += "\n\n"
-             msg += "**Antrian Lagu**"
+             msg += "**Şarkı Sırası**"
              for song in temp:
                  name = song[0]
                  usr = song[1].mention(style="md")
                  msg += f"\n• {name}"
-                 msg += f"\n• Atas permintaan {usr}\n"
+                 msg += f"\n• İstek üzerine {usr}\n"
         await cb.message.edit(msg)      
                       
     elif type_ == "resume":     
@@ -352,45 +340,45 @@ async def m_cb(b, cb):
             ) or (
                 callsmusic.pytgcalls.active_calls[chet_id] == "playing"
             ):
-                await cb.answer("voice chat is not connected or already playing", show_alert=True)
+                await cb.answer("Voice chat is not connected or already playing", show_alert=True)
         else:
             callsmusic.pytgcalls.resume_stream(chet_id)
-            await cb.answer("musik dilanjutkan!")
+            await cb.answer("Müzik devam etti!")
      
-    elif type_ == "pause":         
+    elif type_ == "puse":         
         if (
             chet_id not in callsmusic.pytgcalls.active_calls
                 ) or (
                     callsmusic.pytgcalls.active_calls[chet_id] == "paused"
                 ):
-            await cb.answer("voice chat is not connected or already paused", show_alert=True)
+            await cb.answer("Voice chat is not connected or already paused", show_alert=True)
         else:
             callsmusic.pytgcalls.pause_stream(chet_id)
             
-            await cb.answer("music dijeda!")
+            await cb.answer("Müzik duraklatıldı!")
 
     elif type_ == "cls":          
-        await cb.answer("menutup menu")
+        await cb.answer("Menü kapalı")
         await cb.message.delete()       
 
     elif type_ == "menu":  
         stats = updated_stats(cb.message.chat, qeue)  
-        await cb.answer("membuka menu")
+        await cb.answer("Açılan menü")
         marr = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("⏹", "leave"),
-                    InlineKeyboardButton("⏸", "pause"),
+                    InlineKeyboardButton("⏸", "puse"),
                     InlineKeyboardButton("▶️", "resume"),
                     InlineKeyboardButton("⏭", "skip")
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 Çalma listesi", "playlist"),
+                    InlineKeyboardButton("📖 PlayList", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("❌ Kapat", "cls")
+                    InlineKeyboardButton("🗑 Kapat", "cls")
                 ]        
             ]
         )
@@ -400,22 +388,22 @@ async def m_cb(b, cb):
         if qeue:
             qeue.pop(0)
         if chet_id not in callsmusic.pytgcalls.active_calls:
-            await cb.answer("assistant is not connected to voice chat!", show_alert=True)
+            await cb.answer("Asistan sesli sohbete bağlı değil!", show_alert=True)
         else:
             callsmusic.queues.task_done(chet_id)
 
             if callsmusic.queues.is_empty(chet_id):
                 callsmusic.pytgcalls.leave_group_call(chet_id)
 
-                await cb.message.edit("• antrian tidak cukup\n• meninggalkan obrolan suara")
+                await cb.message.edit("• No more playlist\n• Sesli sohbeti bırakma")
             else:
                 callsmusic.pytgcalls.change_stream(
                     chet_id, callsmusic.queues.get(chet_id)["file"]
                 )
-                await cb.answer("skipped")
+                await cb.answer("Atlanır")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⏭️ sıraya atlama\n▶️ oynuyor: **{qeue[0][0]}**"
+                    f"⫸ Atlanan parça\n⫸ Şimdi oynatıyor: **{qeue[0][0]}**"
                 )
 
     elif type_ == "leave":
@@ -426,21 +414,9 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("✅ **__Assistant telah terputus dari obrolan suara__**")
+            await cb.message.edit("⏹ **Müzik durduruldu!**")
         else:
-            await cb.answer("assistant is not connected to voice chat!", show_alert=True)
-
-
-@Client.on_callback_query(
-    filters.regex(pattern=r"^(mnu)$")
-)
-@cb_admin_check
-async def m_cb(b, cb):
-    type_ = cb.matches[0].group(1)
-    cb.message.chat.id
-    if type_ == "mnu":
-        await cb.answer("Menu opened")
-        await cb.message.edit()
+            await cb.answer("Asistan sesli sohbete bağlı değil!", show_alert=True)
 
 
 @Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
@@ -607,7 +583,7 @@ async def play(_, message: Message):
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:24]}...](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ ⏰ **Süre** - {results[j]['duration']}\n"
-                toxxt += f" └ 👁 **Görüntüleyici** - {results[j]['views']}\n\n"
+                toxxt += f" └ 👁 **Görüntülenme** - {results[j]['views']}\n\n"
                 j += 1            
             keyboard = InlineKeyboardMarkup(
                 [
