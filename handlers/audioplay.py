@@ -24,7 +24,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 @errors
 async def mp3(_, message: Message):
 
-    lel = await message.reply("🔁 **memproses** musik...")
+    lel = await message.reply("🔁 **İşleme alındı** müzik...")
     sender_id = message.from_user.id
     sender_name = message.from_user.first_name
 
@@ -32,16 +32,16 @@ async def mp3(_, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        text="💡 Group",
-                        url=f"https://t.me/{GROUP_SUPPORT}"),
+                        text="👮‍♂️ Sahip",
+                        url=f"https://t.me/Furkanbeyy"),
                     InlineKeyboardButton(
-                        text="🕊️ Channel​",
-                        url=f"https://t.me/{UPDATES_CHANNEL}")
+                        text="🕊️ Kanal​",
+                        url=f"https://t.me/SohbetDestek")
                  ],
                  [
                     InlineKeyboardButton(
-                        text="👩‍💻 Bot by​",
-                        url=f"https://t.me/{OWNER_NAME}")
+                        text="👩‍💻 Bot Sahibi",
+                        url=f"https://t.me/Mahoaga")
                 ]
             ]
         )
@@ -52,7 +52,7 @@ async def mp3(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"❎ Tidak dapat memutar lagu lebih dari {DURATION_LIMIT}!"
+                f"❎ Daha fazla şarkı çalınamıyor {DURATION_LIMIT}!"
             )
 
         file_name = get_file_name(audio)
@@ -63,7 +63,7 @@ async def mp3(_, message: Message):
     elif url:
         file_path = await converter.convert(youtube.download(url))
     else:
-        return await lel.edit_text("❎ anda tidak memberikan saya musik atau link YouTube untuk diputar!")
+        return await lel.edit_text("❎ bana çalmam için müzik veya YouTube bağlantıları vermiyorsunuz!")
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message.chat.id, file=file_path)
@@ -72,7 +72,7 @@ async def mp3(_, message: Message):
         await message.reply_photo(
         photo=f"{AUD_IMG}",
         reply_markup=keyboard,
-        caption=f"💡  lagu anda ditambahkan ke **antrian!**\n\n🏷 Nama : {flname} \n🎧 Atas permintaan {costumer}")
+        caption=f"💡  Şarkınız **sıra!**\n\n🏷 İsmi : {flname} \n🎧 İstek üzerine {costumer}")
         return await lel.delete()
     else:
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path)
@@ -81,6 +81,6 @@ async def mp3(_, message: Message):
         await message.reply_photo(
         photo=f"{AUD_IMG}",
         reply_markup=keyboard,
-        caption=f"💡 **sedang memutar**\n\n🏷 Nama : {flname} \n🎧 Atas permintaan {costumer}!"
+        caption=f"💡 **dönüyor**\n\n🏷 İsmi : {flname} \n🎧 İstek üzerine {costumer}!"
         )
         return await lel.delete()
