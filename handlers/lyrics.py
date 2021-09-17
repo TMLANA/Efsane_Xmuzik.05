@@ -7,8 +7,8 @@ from pyrogram import Client
 from helpers.filters import command
 
 
-@Client.on_message(command(["lirik", f"lirik@{BOT_USERNAME}"]))
-async def lirik(_, message):
+@Client.on_message(command(["söz", f"söz@{BOT_USERNAME}"]))
+async def söz(_, message):
     try:
         if len(message.command) < 2:
             await message.reply_text("`Kasih judul lagunya lah blok!!!`")
@@ -19,4 +19,4 @@ async def lirik(_, message):
         result = f"{resp['data']}"
         await rep.edit(result)
     except Exception:
-        await rep.edit("`Lirik tidak ditemukan !`\n\n• `Coba cari dengan judul lagu yang lebih jelas`")
+        await rep.edit("`Şarkı sözleri bulunamadı !`\n\n• `Daha net bir başlık parçası bulmaya çalışın.`")
