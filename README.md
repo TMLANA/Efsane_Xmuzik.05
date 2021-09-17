@@ -1,4 +1,4 @@
-<h2 align="centre">🎵 Kennedy X Music 🎵
+<h2 align="centre">🎵 Efsane X Music 🎵
 
 ### Music bot for playing music on telegram voice chat group.
 <p align="center"><a href="https://t.me/KennedyXMusic"><img src="https://telegra.ph/file/634bc96909fc3963d2673.jpg" width="300"></a></p>
@@ -54,7 +54,7 @@
 ## Heroku Deployment 💜
 The easy way to host this bot, deploy to Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/KennedyProject/KennedyXMusic)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Mehmetbaba55/EfsaneXMusic) 
 
 ## Deploy On VPS 💙
 
