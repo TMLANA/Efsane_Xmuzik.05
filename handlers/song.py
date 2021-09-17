@@ -28,7 +28,7 @@ def song(client, message):
     rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
     query = "".join(" " + str(i) for i in message.command[1:])
     print(query)
-    m = message.reply("🔎 **Sedang Mencari Lagu** 🔎")
+    m = message.reply("🔎 **Bir Şarkı Arıyor** 🔎")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -43,21 +43,21 @@ def song(client, message):
         results[0]["url_suffix"]
         results[0]["views"]
     except Exception as e:
-        m.edit("❎ **Lagu Tidak ditemukan.**\n\n**Coba Masukan Judul lagu yang lebih jelas.**")
+        m.edit("❎ **Şarkı Bulunamadı.**\n\n**Daha Net Bir Şarkı Adı Koymaya Çalışın.**")
         print(str(e))
         return
-    m.edit("📥 **Sedang Mendownload Lagu**")
+    m.edit("📥 **Şarkı İndirme**")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"""
-**🏷 Nama Lagu:** [{title}]({link})
-**⏱️ Durasi Lagu:** {duration}
-**👁 Dilihat Oleh:** {results[0]['views']}
-**🤖 Diunggah Oleh:** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
-**👤 Permintaan Dari:** {rpk}
+**🏷 Şarkı Adı:** [{title}]({link})
+**⏱️ Şarkı Süresi:** {duration}
+**👁 Tarafından görüldü:** {results[0]['views']}
+**🤖 Karşıya Yükleyen:** [MusicBot](https://t.me/Mp3dinleme_Bot)
+**👤 İstekler:** {rpk}
 """
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
