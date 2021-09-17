@@ -32,9 +32,9 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>🕊️ **Hallo {message.from_user.mention}** \n
+        f"""<b>🕊️ **Merhaba {message.from_user.mention}** \n
 **__[EfsaneMusicBot](https://t.me/Mp3dinleme_Bot) Telegram sesli sohbetinde müzik çalmak için tasarlanmış bir bottur!__**
-**__Untuk melihat beberapa perintah dalam penggunaan bot bisa klik » /help__**
+**__Bot kullanımında bazı komutları görmek için » /help__**
 </b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
