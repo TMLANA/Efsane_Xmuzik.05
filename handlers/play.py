@@ -122,30 +122,30 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Lagu Yang Sedang dimainkan** di {}".format(message.chat.title)
-    msg += "\n• "+ now_playing
-    msg += "\n• Atas permintaan "+by
+    msg = "**Çalınan Şarkılar** di {}".format(message.chat.title)
+    msg += "\n• "+ now_playing 
+    msg += "\n• İstek üzerine "+by
     temp.pop(0)
     if temp:
         msg += "\n\n"
-        msg += "**Antrian Lagu**"
+        msg += "**Şarkı Sırası**"
         for song in temp:
             name = song[0]
             usr = song[1].mention(style="md")
             msg += f"\n• {name}"
-            msg += f"\n• Atas permintaan {usr}\n"
+            msg += f"\n• İstek üzerine {usr}\n"
     await message.reply_text(msg)
 
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "Pengaturan dari **{}**".format(chat.title)
+        stats = "Ayarlar**{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
-            stats += "Volume: {}%\n".format(vol)
-            stats += "Lagu dalam antrian: `{}`\n".format(len(que))
-            stats += "Sedang memutar lagu: **{}**\n".format(queue[0][0])
-            stats += "Atas permintaan: {}".format(queue[0][1].mention)
+            stats += "Ses: {}%\n".format(vol)
+            stats += "Sırada şarkılar: `{}`\n".format(len(que))
+            stats += "Şarkı çalma: **{}**\n".format(queue[0][0])
+            stats += "İstek üzerine: {}".format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -164,10 +164,10 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 Daftar putar", "playlist"),
+                InlineKeyboardButton("📖 Playlist", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Tutup", "cls")
+                InlineKeyboardButton("🗑  Kapat", "cls")
             ]        
         ]
     )
@@ -189,7 +189,7 @@ async def settings(client, message):
         else:
             await message.reply(stats, reply_markup=r_ply("play"))
     else:
-        await message.reply("**mohon nyalakan dulu obrolan suaranya.**")
+        await message.reply("**Lütfen önce sesli sohbeti açın.**")
 
 
 @Client.on_message(
@@ -204,7 +204,7 @@ async def hfmm(_, message):
         return
     if len(message.command) != 2:
         await message.reply_text(
-            "**saya hanya mengenali** `/musicplayer on` **dan** `/musicplayer off`"
+            "**Sadece tanıdım.** `/musicplayer on` **Ve** `/musicplayer off`"
         )
         return
     status = message.text.split(None, 1)[1]
@@ -216,22 +216,22 @@ async def hfmm(_, message):
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"✅ **pemutar musik telah diaktifkan untuk grup ini.** {message.chat.id}"
+            f"✅ **Müzik Çalar bu grup için etkinleştirildi.** {message.chat.id}"
         )
 
     elif status == "OFF" or status == "off" or status == "Off":
-        lel = await message.reply("`memproses...`")
+        lel = await message.reply("`İşlem...`")
         
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("**pemutar musik sudah tidak aktif.**")
+            await lel.edit("**Müzik çalar artık etkin değil.**")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"✅ **pemutar musik telah dimatikan untuk grup ini.** {message.chat.id}"
+            f"✅ **Müzik Çalar bu grup için kapatıldı.** {message.chat.id}"
         )
     else:
         await message.reply_text(
-            "**saya hanya mengenali** `/musicplayer on` **dan** `/musicplayer off`"
+            "**Sadece tanıdım.** `/musicplayer on` **ve** `/musicplayer off`"
         )
 
 
@@ -246,24 +246,24 @@ async def p_cb(b, cb):
     if type_ == "playlist":
         queue = que.get(cb.message.chat.id)
         if not queue:
-            await cb.message.edit("**❎ sedang tidak memutar lagu**")
+            await cb.message.edit("**❎ Şarkıyı çalmıyorum**")
         temp = []
         for t in queue:
             temp.append(t)
         now_playing = temp[0][0]
         by = temp[0][1].mention(style="md")
-        msg = "**Now playing** in {}".format(cb.message.chat.title)
+        msg = "**Şimdi oynatıyor** in {}".format(cb.message.chat.title)
         msg += "\n• " + now_playing
-        msg += "\n• Req by " + by
+        msg += "\n• Siz tarafından" + by
         temp.pop(0)
         if temp:
             msg += "\n\n"
-            msg += "**Antrian Lagu**"
+            msg += "**Şarkı Sırası**"
             for song in temp:
                 name = song[0]
                 usr = song[1].mention(style="md")
                 msg += f"\n• {name}"
-                msg += f"\n• Req by {usr}\n"
+                msg += f"\n• Siz tarafından {usr}\n"
         await cb.message.edit(msg)      
 
 
@@ -274,7 +274,7 @@ async def p_cb(b, cb):
 async def m_cb(b, cb):
     global que   
     if (
-        cb.message.chat.title.startswith("Channel Music: ")
+        cb.message.chat.title.startswith("Kanal Müziği: ")
         and chat.title[14:].isnumeric()
     ):
         chet_id = int(chat.title[13:])
