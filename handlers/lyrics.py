@@ -7,8 +7,8 @@ from pyrogram import Client
 from helpers.filters import command
 
 
-@Client.on_message(command(["söz", f"söz@{BOT_USERNAME}"]))
-async def söz(_, message):
+@Client.on_message(command(["lyrics", f"lyrics@{BOT_USERNAME}"]))
+async def lyrics_, message):
     try:
         if len(message.command) < 2:
             await message.reply_text("`Kasih judul lagunya lah blok!!!`")
