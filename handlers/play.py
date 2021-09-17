@@ -164,10 +164,10 @@ def r_ply(type_):
                 InlineKeyboardButton("⏭", "skip")
             ],
             [
-                InlineKeyboardButton("📖 Daftar putar", "playlist"),
+                InlineKeyboardButton("📖 Çalma listesi", "playlist"),
             ],
             [       
-                InlineKeyboardButton("🗑 Tutup", "cls")
+                InlineKeyboardButton("❌ Kapat", "cls")
             ]        
         ]
     )
@@ -386,11 +386,11 @@ async def m_cb(b, cb):
                 
                 ],
                 [
-                    InlineKeyboardButton("📖 Daftar putar", "playlist"),
+                    InlineKeyboardButton("📖 Çalma listesi", "playlist"),
                 
                 ],
                 [       
-                    InlineKeyboardButton("🗑 Tutup", "cls")
+                    InlineKeyboardButton("❌ Kapat", "cls")
                 ]        
             ]
         )
@@ -415,7 +415,7 @@ async def m_cb(b, cb):
                 await cb.answer("skipped")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"⏭️ melompati antrian\n▶️ sedang memutar : **{qeue[0][0]}**"
+                    f"⏭️ sıraya atlama\n▶️ oynuyor: **{qeue[0][0]}**"
                 )
 
     elif type_ == "leave":
@@ -449,7 +449,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔎 **Mencari Lagu** 🔎")
+    lel = await message.reply("🔎 **Şarkı Aranıyor** 🔎")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -473,7 +473,7 @@ async def play(_, message: Message):
                     invitelink = await _.export_chat_invite_link(chid)
                 except:
                     await lel.edit(
-                        "<b>💡 Untuk menggunakan saya, saya harus menjadi admin dengan **izin** :\n\n» ❌ __Menghapus pesan__\n» ❌ __Memblokir pengguna__\n» ❌ __Menambahkan anggota__\n» ❌ __Mengatur obrolan suara__\n» ❌ __Tambahkan admin baru__\n\nKemudian ketik /reload</b>",
+                        "<b>💡 Beni kullanmak için, yönetici olmak zorundayım.**izin** :\n\n» ❌ __Menghapus pesan__\n» ❌ __Memblokir pengguna__\n» ❌ __Menambahkan anggota__\n» ❌ __Mengatur obrolan suara__\n» ❌ __Tambahkan admin baru__\n\nKemudian ketik /reload</b>",
                     )
                     return
                 try:
@@ -554,7 +554,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🔎 **Mencari Lagu** 🔎")
+        await lel.edit("🔎 **Şarkı Aranıyor** 🔎")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -600,7 +600,7 @@ async def play(_, message: Message):
           await lel.edit("Give me something to play")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
-            toxxt = "**__Silahkan pilih lagu yang ingin diputar__**\n\n"
+            toxxt = "**__Lütfen çalmak istediğiniz şarkıyı seçin__**\n\n"
             j = 0
             useer=user_name
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣"]
@@ -713,9 +713,9 @@ async def lol_cb(b, cb):
         return
     useer_id = int(useer_id)
     if cb.from_user.id != useer_id:
-        await cb.answer("Anda bukan orang yang meminta untuk memutar lagu!", show_alert=True)
+        await cb.answer("Şarkı çalmak isteyen sen değilsin.!", show_alert=True)
         return
-    await cb.message.edit("🔁 **Menghubungkan Ke VCG**")
+    await cb.message.edit("🔁 **Sesli sohbette Müzik Çalacağım**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -870,7 +870,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🔁 **Menghubungkan Ke VCG**")
+    await lel.edit("🔁 **Sesli sohbette Müzik Çalacağım**")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
