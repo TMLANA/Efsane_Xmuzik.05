@@ -73,23 +73,23 @@ async def cbhelp(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "📚 Temel Cmd", callback_data="cbbasic"
+                        "📚 Temel komutlar", callback_data="cbbasic"
                     ),
                     InlineKeyboardButton(
-                        "📕 İleri Cmd", callback_data="cbadvanced"
+                        "📕 İleri komutlar", callback_data="cbadvanced"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📘 Admin Cmd", callback_data="cbadmin"
+                        "📘 Admin komutları", callback_data="cbadmin"
                     ),
                     InlineKeyboardButton(
-                        "📗 Kullanıcı Cmd", callback_data="cbsudo"
+                        "📗 Kullanıcı komutları", callback_data="cbsudo"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "♥️ Şaka Cmd", callback_data="cbfun"
+                        "♥️ Şaka komutları", callback_data="cbfun"
                     )
                 ],
                 [
