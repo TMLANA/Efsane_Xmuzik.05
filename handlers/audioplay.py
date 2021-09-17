@@ -40,7 +40,7 @@ async def mp3(_, message: Message):
                  ],
                  [
                     InlineKeyboardButton(
-                        text="👩‍💻 Bot Sahibi",
+                        text="👨‍💻 Bot Sahibi",
                         url=f"https://t.me/Mahoaga")
                 ]
             ]
