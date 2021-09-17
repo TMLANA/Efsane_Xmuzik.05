@@ -20,9 +20,9 @@ from helpers.gets import get_url, get_file_name
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-@Client.on_message(command(oynat") & other_filters)
+@Client.on_message(command("mp3") & other_filters)
 @errors
-async def oynat(_, message: Message):
+async def mp3(_, message: Message):
 
     lel = await message.reply("🔁 **İşleme alındı** müzik...")
     sender_id = message.from_user.id
