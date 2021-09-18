@@ -175,7 +175,8 @@ async def cbadmin(_, query: CallbackQuery):
 /end - Müziği kapatma 
 /userbotjoin - Yardımcıları gruba katılmaya davet etme 
 /musicplayer (on / off) - Devre Dışı Bırak / grubunuzdaki müzik çaları açma
-/auth - Üye için botu kullanmasına olanak sağlamak (Yetkilendirme) 
+/auth - Üye için botu kullanmasına olanak sağlamak (Yetkilendirme)
+deauth - üyenin botu kullanma yetkisini almak için (Yetkisizleştirme) 
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
