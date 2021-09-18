@@ -48,11 +48,11 @@ async def cbstart(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "👥 Support", url=f"https://t.me/Sohbetdestek")
+                        "👥 Destek Kanalı", url=f"https://t.me/Sohbetdestek")
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Komut", callback_data="cbhelp"
+                        "📚 Botun Komutları", callback_data="cbhelp"
                     )
                 ]
             ]
@@ -73,18 +73,18 @@ async def cbhelp(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "📚 Temel komutlar", callback_data="cbbasic"
+                        "📚 Temel Komutlar", callback_data="cbbasic"
                     ),
                     InlineKeyboardButton(
-                        "📕 İleri komutlar", callback_data="cbadvanced"
+                        "📕 Gelişmiş Komutlar", callback_data="cbadvanced"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📘 Admin komutları", callback_data="cbadmin"
+                        "📘 Admin Komutları", callback_data="cbadmin"
                     ),
                     InlineKeyboardButton(
-                        "📗 Kullanıcı komutları", callback_data="cbsudo"
+                        "📗 Kullanıcı Komutları", callback_data="cbsudo"
                     )
                 ],
                 [
@@ -174,7 +174,8 @@ async def cbadmin(_, query: CallbackQuery):
 /skip - Sonraki şarkıya geçme 
 /end - Müziği kapatma 
 /userbotjoin - Yardımcıları gruba katılmaya davet etme 
-/musicplayer (on / off) - Devre Dışı Bırak / grubunuzdaki müzik çaları açma 
+/musicplayer (on / off) - Devre Dışı Bırak / grubunuzdaki müzik çaları açma
+/auth - Üye için botu kullanmasına olanak sağlamak (Yetkilendirme) 
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
@@ -284,7 +285,7 @@ async def cbhelps(_, query: CallbackQuery):
                         "📚 Temel Komutlar", callback_data="cbbasic"
                     ),
                     InlineKeyboardButton(
-                        "📕 İleri Komutlar", callback_data="cbadvanced"
+                        "📕 Gelişmiş Komutlar", callback_data="cbadvanced"
                     )
                 ],
                 [
