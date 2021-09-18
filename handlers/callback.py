@@ -166,7 +166,7 @@ async def cbadvanced(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbadmin"))
 async def cbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""<b>🕊️ Grup yöneticisi komutu</b>
+        f"""<b>📣 Grup yöneticisi komutu</b>
 
 /player - kayıttan yürütme durumunu görüntüleme 
 /pause - çalan müziği duraklatma 
@@ -176,7 +176,7 @@ async def cbadmin(_, query: CallbackQuery):
 /userbotjoin - Yardımcıları gruba katılmaya davet etme 
 /musicplayer (on / off) - Devre Dışı Bırak / grubunuzdaki müzik çaları açma
 /auth - Üye için botu kullanmasına olanak sağlamak (Yetkilendirme)
-deauth - üyenin botu kullanma yetkisini almak için (Yetkisizleştirme) 
+/deauth - üyenin botu kullanma yetkisini almak için (Yetkisizleştirme) 
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
