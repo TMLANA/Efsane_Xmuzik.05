@@ -2,7 +2,7 @@ from pyrogram.types import Message
 
 
 def extract_user(message: Message) -> (int, str):
-    """extracts the user from a message"""
+    """kullanıcıyı bir iletiden ayıklar"""
     user_id = None
     user_first_name = None
 
