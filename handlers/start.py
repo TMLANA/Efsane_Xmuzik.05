@@ -40,16 +40,16 @@ async def start_(client: Client, message: Message):
             [ 
                 [
                     InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ​ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "➕ ʙᴇɴɪ ɢʀᴜʙᴜɴᴜᴢᴀ ᴇᴋʟᴇʏɪɴ ​ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/Sohbetdestek"
+                        "ᴅᴇꜱᴛᴇᴋ ᴋᴀɴᴀʟɪ", url=f"https://t.me/Sohbetdestek"
                     ),
                     InlineKeyboardButton(
-                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/kurtadamoyunuu")
+                        "ᴏʏᴜɴ ɢʀᴜʙᴜ", url=f"https://t.me/kurtadamoyunuu")
                 ],[
                     InlineKeyboardButton(
-                        "sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ​", url="https://github.com/Mehmetbaba55/EfsaneXMusic"
+                        "ᴋᴀʏɴᴀᴋ ᴋᴏᴅᴜ", url="https://github.com/Mehmetbaba55/EfsaneXMusic"
                     )
                 ]
             ]
