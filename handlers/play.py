@@ -40,7 +40,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("you not allowed to do this!", show_alert=True)
+            await cb.answer("bunu yapmanıza izin verilmiyor!", show_alert=True)
             return
     return decorator                                                                       
                                           
@@ -116,7 +116,7 @@ async def playlist(client, message):
         return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("**nothing in streaming!**")
+        await message.reply_text("**akışta hiçbir şey yok!**")
     temp = []
     for t in queue:
         temp.append(t)
@@ -139,7 +139,7 @@ async def playlist(client, message):
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
     if chat.id in callsmusic.pytgcalls.active_calls:
-        stats = "Ayarlar**{}**".format(chat.title)
+        stats = "Ayarlar **{}**".format(chat.title)
         if len(que) > 0:
             stats += "\n\n"
             stats += "Ses: {}%\n".format(vol)
@@ -509,8 +509,8 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Sohbetdestek "),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
+                    InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Sohbetdestek "),
+                    InlineKeyboardButton(text="Kapat", callback_data="cls")
                 ],
             ]
         )
@@ -554,8 +554,8 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Sohbetdestek"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
+                    InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Sohbetdestek"),
+                    InlineKeyboardButton(text="Kapat", callback_data="cls")
                 ],
             ]
         )
@@ -626,8 +626,8 @@ async def play(_, message: Message):
             keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Kurtadamoyunuu"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
+                    InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Kurtadamoyunuu"),
+                    InlineKeyboardButton(text="Kapat", callback_data="cls")
                 ],
             ]
         )
@@ -665,7 +665,7 @@ async def play(_, message: Message):
             return
         await message.reply_photo(
             photo="final.png",
-            caption=f"💡 **Oynatılan**\n\n🏷 **İsmi:** [{title}]({url})\n⏱ **Süre:** `{duration}`\n" \
+            caption=f"▶️ **Oynatılan**\n\n🏷 **İsmi:** [{title}]({url})\n⏱ **Süre:** `{duration}`\n" \
                    +f"🎧 **Talep:** {message.from_user.mention} \n",
             reply_markup=keyboard
         )
@@ -690,7 +690,7 @@ async def lol_cb(b, cb):
     if cb.from_user.id != useer_id:
         await cb.answer("Şarkı çalmak isteyen sen değilsin.!", show_alert=True)
         return
-    await cb.message.edit("🔁 **Müzik Hazırlanıyor**")
+    await cb.message.edit("🔁 **İşleme alındı**")
     x=int(x)
     try:
         useer_name = cb.message.reply_to_message.from_user.first_name
@@ -727,8 +727,8 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/Sohbetdestek"),
-                    InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="Kapat")
+                    InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Sohbetdestek"),
+                    InlineKeyboardButton(text="Kapat", callback_data="cls")
                 ],
             ]
         )
@@ -749,7 +749,7 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
             photo="final.png",
-            caption = f"💡 **Kuyruğa eklenen şarkılar** » `{position}`\n\n🏷 **İsmi:** [{title}]({url})\n⏱ **Süresi:** {duration}\n" \
+            caption = f"✔️ **Kuyruğa eklenen şarkılar** » `{position}`\n\n🏷 **İsmi:** [{title}]({url})\n⏱ **Süresi:** {duration}\n" \
                     + f"🎧 **Talep:** {r_by.mention} \n",
                    reply_markup=keyboard,
         )
@@ -771,7 +771,7 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
             photo="final.png",
-            caption = f"💡 **Oynatılan**\n\n🏷 **İsmi:** [{title}]({url})\n⏱ **Süresi:** {duration}\n" \
+            caption = f"▶️ **Oynatılan**\n\n🏷 **İsmi:** [{title}]({url})\n⏱ **Süresi:** {duration}\n" \
                     + f"🎧 **Talep:** {r_by.mention} \n",
                     reply_markup=keyboard,
         )
