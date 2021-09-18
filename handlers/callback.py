@@ -148,6 +148,7 @@ async def cbadvanced(_, query: CallbackQuery):
 /reload - botları güncelleştirme ve yönetici listelerini yenileme 
 /alive - canlı botun durumunu görmek 
 /ping - ping bot'larını denetleme
+/id - kullanıcı id bilgisi çıkartır
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
