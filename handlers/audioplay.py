@@ -81,6 +81,6 @@ async def mp3(_, message: Message):
         await message.reply_photo(
         photo=f"{AUD_IMG}",
         reply_markup=keyboard,
-        caption=f"💡 **dönüyor**\n\n🏷 İsmi : {flname} \n🎧 İstek üzerine {costumer}!"
+        caption=f"▶️ **Oynatılıyor**\n\n🏷 İsmi : {flname} \n🎧 İstek üzerine {costumer}!"
         )
         return await lel.delete()
