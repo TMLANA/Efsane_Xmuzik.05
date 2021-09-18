@@ -424,7 +424,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔎 **Şarkı Aranıyor** 🔎")
+    lel = await message.reply("🔎 **Lütfen Bekleyiniz** 🔎")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
     try:
@@ -779,7 +779,7 @@ async def lol_cb(b, cb):
 
 
 
-@Client.on_message(command(["ytpy", f"ytp@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["ytplay", f"ytp@{BOT_USERNAME}"]) & other_filters)
 async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
@@ -847,7 +847,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 **Sesli sohbete bağlanma...**")
+    await lel.edit("🎵 **Çalışmaz ise play komutunu kullanın...**")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
