@@ -457,7 +457,7 @@ async def play(_, message: Message):
                         message.chat.id, "**__Müzik çalmak için bir gruba katıldım.__**"
                     )
                     await lel.edit(
-                        "<b>✅ Assistant bergabung ke grup\n\n• Jika terjadi masalah, laporkan ke @kenbotsupport</b>",
+                        "<b>✅ Asistan gruba katılır\n\n• Bir sorun varsa, @SohbetDestek 'e rapor verin</b>",
                     )
                 except UserAlreadyParticipant:
                     pass
@@ -510,7 +510,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Sohbetdestek "),
-                    InlineKeyboardButton(text="Kapat", callback_data="cls")
+                    InlineKeyboardButton(text="Kapat", callback_data="closed")
                 ],
             ]
         )
@@ -555,7 +555,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Sohbetdestek"),
-                    InlineKeyboardButton(text="Kapat", callback_data="cls")
+                    InlineKeyboardButton(text="Kapat", callback_data="closed")
                 ],
             ]
         )
@@ -627,7 +627,7 @@ async def play(_, message: Message):
             [
                 [
                     InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Kurtadamoyunuu"),
-                    InlineKeyboardButton(text="Kapat", callback_data="cls")
+                    InlineKeyboardButton(text="Kapat", callback_data="closed")
                 ],
             ]
         )
@@ -728,7 +728,7 @@ async def lol_cb(b, cb):
             [
                 [
                     InlineKeyboardButton("Destek Kanalı", url=f"https://t.me/Sohbetdestek"),
-                    InlineKeyboardButton(text="Kapat", callback_data="cls")
+                    InlineKeyboardButton(text="Kapat", callback_data="closed")
                 ],
             ]
         )
