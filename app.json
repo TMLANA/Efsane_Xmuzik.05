@@ -27,7 +27,7 @@
         "BOT_IMG": {
             "description": "Fotoğraftan canlıya.",
             "required": false,
-            "value": "https://telegra.ph/file/cd0b87484429704c7b935.png"
+            "value": "https://i.ibb.co/rww4wX0/images.jpg"
         },
         "ASSISTANT_NAME": {
             "description": "kullanmadan yardımcı kullanıcı adınızı doldurun @",
