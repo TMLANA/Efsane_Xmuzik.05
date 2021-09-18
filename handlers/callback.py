@@ -1,4 +1,4 @@
-# (C) supun-maduraga my best friend for his project on call-music-plus
+# (C) Efsane Müzikal herkes için en güzel müzik botu.. 
 
 from time import time
 from datetime import datetime
@@ -94,7 +94,7 @@ async def cbhelp(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbguide"
+                        "Geri", callback_data="cbguide"
                     )
                 ]
             ]
@@ -107,31 +107,31 @@ async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>🕊️ Botlar için temel komutlar</b>
 
-💡 [ SETTING GRUP ]
-/play (judul) - memutar musik melalui youtube
-/ytp (judul) - memutar musik secara langsung 
-/stream (balas ke audio) - memutar kusik melalui balas ke audio
-/playlist - melihat daftar antrian
-/song (judul) - mengunduh musik dari youtube
-/search (judul) - mencari musik dari youtube secara detail
-/video (judul) - mengunduh musik dari youtube secara detail
-/lirik - (judul) mencari lirik
-💡 [ SETTING CHANNEL ]
-/cplay - memutar musik melalui channel
-/cplayer - melihat daftar antrian
-/cpause - jeda pemutar musik
-/cresume - melanjut pemutaran musik
-/cskip - melewati ke lagu berikutnya
-/cend - memberhentikan musik
-/admincache - menyegarkan cache admin
-/ubjoinc - mengundang assisten join ke channel
+💡 [ GRUP AYARLAMA ]
+/play (Başlık) - Youtube üzerinden müzik çalma 
+/ytp (Başlık) - Doğrudan müzik çalma 
+/mp3 (Sesi yanıtlama) - sesli yanıt yoluyla makbuzları çalma 
+/playlist - sıra listesine bakın 
+/song (Başlık) - Youtube'dan müzik indirme 
+/search (Başlık) - Youtube'dan detaylı müzik arayın 
+/video (Başlık) - Youtube'dan ayrıntılı olarak müzik indirin
+/lirik - (Başlık) şarkı sözleri arıyor 
+💡 [ KANAL AYARLAMA ]
+/cplay - Kanallar üzerinden müzik çalma
+/cplayer - sıra listesine bakın 
+/cpause - müzik çalar duraklatma 
+/cresume - devam eden müzik çalma 
+/cskip - Sonraki şarkıya geçme 
+/cend - Müziği durdurma 
+/admincache - yönetici önbelleğini yenileme 
+/ubjoinc - yardım katılmayı kanala davet etme 
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbhelp"
+                        "Geri", callback_data="cbhelp"
                     )
                 ]
             ]
@@ -144,17 +144,17 @@ async def cbadvanced(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>🕊️ Gelişmiş komut</b>
 
-/start (di grup) - melihat status bot
-/reload - memperbarui bot dan menyegarkan daftar admin
-/alive - melihat status alive bot
-/ping - cek ping bot
+/start (grupta) - bot durumunu görüntüleme 
+/reload - botları güncelleştirme ve yönetici listelerini yenileme 
+/alive - canlı botun durumunu görmek 
+/ping - ping bot'larını denetleme
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbhelp"
+                        "Geri", callback_data="cbhelp"
                     )
                 ]
             ]
@@ -167,20 +167,20 @@ async def cbadmin(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>🕊️ Grup yöneticisi komutu</b>
 
-/player - melihat status pemutaran
-/pause - jeda musik yang diputar
-/resume - melanjutkan musik yang di jeda
-/skip - melewati ke lagu berikutnya
-/end - mematikan musik
-/userbotjoin - mengundang assistant untuk bergabung ke grup
-/musicplayer (on / off) - mematikan / menghidupkan pemutar musik di grupmu
+/player - kayıttan yürütme durumunu görüntüleme 
+/pause - çalan müziği duraklatma 
+/resume - Duraklatmadaki müziğe devam et 
+/skip - Sonraki şarkıya geçme 
+/end - Müziği kapatma 
+/userbotjoin - Yardımcıları gruba katılmaya davet etme 
+/musicplayer (on / off) - Devre Dışı Bırak / grubunuzdaki müzik çaları açma 
 
 💡 Bot Tarafından @SohbetDestek""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbhelp"
+                        "Geri", callback_data="cbhelp"
                     )
                 ]
             ]
@@ -194,16 +194,16 @@ async def cbsudo(_, query: CallbackQuery):
         f"""<b>🕊️ **Kullanıcı komutu**</b>
 
 **/userbotleaveall - mengeluarkan asisten dari semua grup
-/gcast - mengirim pesan global melalui asisten
-/rmd - menghapus file downloadan
-/rmr - menghapus file raw terdownload
+/gcast - yardımcılar aracılığıyla genel iletiler gönderme 
+/rmd - karşıdan yükleme dosyasını silme 
+/rmr - indirilen ham dosyaları silme 
 
 💡 Bot Tarafından @SohbetDestek**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbhelp"
+                        "Geri", callback_data="cbhelp"
                     )
                 ]
             ]
@@ -216,18 +216,18 @@ async def cbfun(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""<b>🕊️ **Komut eğlencesi**</b>
 
-**/chika - cek sendiri
-/wibu - cek sendiri
-/asupan - cek sendiri
-/truth - cek sendiri
-/dare - cek sendiri
+**/chika - Kendinizi kontrol edin 
+/wibu - Kendinizi kontrol edin
+/asupan - Kendinizi kontrol edin
+/truth - Kendinizi kontrol edin
+/dare - Kendinizi kontrol edin
 
 💡 Bot Tarafından @SohbetDestek**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbhelp"
+                        "Geri", callback_data="cbhelp"
                     )
                 ]
             ]
@@ -240,22 +240,22 @@ async def cbguide(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""**BU BOT NASIL KULLANILIR? :**
 
-**1.) Pertama, tambahkan ke grupmu.
-2.) Kemudian jadikan admin dengan semua izin kecuali admin anonim.
-3.) Tambahkan @Sesmusicasistan ke grupmu atau bisa ketik `/userbotjoin` untuk mengundang assistant.
-4.) Nyalakan obrolan suara terlebih dahulu sebelum memutar musik.
+**1.) İlk olarak, grubunuza ekleyin..
+2.) Ardından anonim yöneticiler dışındaki tüm izinlere sahip bir yönetici oluşturun.
+3.) Grubunuza @Sesmusicasistan ekleyin veya `/userbotjoin` asistanları davet etmek için.
+4.) Müzik çalmadan önce sesli sohbeti açma.
 
 💡 Bot Tarafından @SohbetDestek**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "📚 Command List", callback_data="cbhelp"
+                        "📚 Komut Listesi", callback_data="cbhelp"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗑 Close", callback_data="close"
+                        "🚪 Çıkış", callback_data="close"
                     )
                 ]
             ]
@@ -280,28 +280,28 @@ async def cbhelps(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "📚 Temel Cmd", callback_data="cbbasic"
+                        "📚 Temel Komutlar", callback_data="cbbasic"
                     ),
                     InlineKeyboardButton(
-                        "📕 İleri Cmd", callback_data="cbadvanced"
+                        "📕 İleri Komutlar", callback_data="cbadvanced"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "📘 Admin Cmd", callback_data="cbadmin"
+                        "📘 Admin Komutları", callback_data="cbadmin"
                     ),
                     InlineKeyboardButton(
-                        "📗 Kullanıcı Cmd", callback_data="cbsudo"
+                        "📗 Kullanıcı Komutları", callback_data="cbsudo"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "♥️ Şaka Cmd", callback_data="cbfun"
+                        "♥️ Şaka Komutları", callback_data="cbfun"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbstart"
+                        "Geri", callback_data="cbstart"
                     )
                 ]
             ]
@@ -314,17 +314,17 @@ async def cbguides(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""🕊️** BOTLAR NASIL KULLANILIR? 🕊️ :
 
-1.) Pertama, tambahkan ke grupmu.
-2.) Kemudian jadikan admin dengan semua izin kecuali admin anonim.
-3.) Tambahkan @Sesmusicasistan ke grupmu atau bisa ketik `/userbotjoin` untuk mengundang assistant.
-4.) Nyalakan obrolan suara terlebih dahulu sebelum memutar musik.
+1.) İlk olarak, grubunuza ekleyin..
+2.) Ardından anonim yöneticiler dışındaki tüm izinlere sahip bir yönetici oluşturun.
+3.) Grubunuza @Sesmusicasistan ekleyin veya `/userbotjoin` asistanları davet etmek için.
+4.) Müzik çalmadan önce sesli sohbeti açma.
 
 💡 Bot Tarafından @SohbetDestek**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "BACK", callback_data="cbstart"
+                        "Geri", callback_data="cbstart"
                     )
                 ]
             ]
