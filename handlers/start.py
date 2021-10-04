@@ -32,10 +32,7 @@ async def _human_time_duration(seconds):
 @Client.on_message(command("start") & filters.private & ~filters.edited)
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>🕊️ **Merhaba {message.from_user.mention}** \n
-**__[EfsaneMusicBot](https://t.me/Mp3dinleme_Bot) Telegram sesli sohbetinde müzik çalmak için tasarlanmış bir bottur!__**
-**__Bot kullanımında bazı komutları görmek için » /help__**
-</b>""",
+        f"""<b>🕊️ **مرحبا يا {message.from_user.mention}**</b>""",
         reply_markup=InlineKeyboardMarkup(
             [ 
                 [
@@ -43,13 +40,13 @@ async def start_(client: Client, message: Message):
                         "➕ ʙᴇɴɪ ɢʀᴜʙᴜɴᴜᴢᴀ ᴇᴋʟᴇʏɪɴ ​ ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
                 ],[
                     InlineKeyboardButton(
-                        "ᴅᴇꜱᴛᴇᴋ ᴋᴀɴᴀʟɪ", url=f"https://t.me/Sohbetdestek"
+                        "قناه البوت", url=f"https://t.me/vvvvisn"
                     ),
                     InlineKeyboardButton(
-                        "ᴏʏᴜɴ ɢʀᴜʙᴜ", url=f"https://t.me/kurtadamoyunuu")
+                        "كروب الدعم", url=f"https://t.me/vvvvsin")
                 ],[
                     InlineKeyboardButton(
-                        "ᴋᴀʏɴᴀᴋ ᴋᴏᴅᴜ", url="https://github.com/Mehmetbaba55/EfsaneXMusic"
+                        "مطور البوت", url="https://t.me/cDDDD"
                     )
                 ]
             ]
@@ -76,7 +73,7 @@ async def start(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "👥 Support", url=f"https://t.me/Sohbetdestek")
+                        "👥 الدعم", url=f"https://t.me/CDDDDD")
                 ],
                 [
                     InlineKeyboardButton(
