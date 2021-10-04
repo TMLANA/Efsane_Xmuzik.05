@@ -6,7 +6,7 @@ from callsmusic.callsmusic import client as USER
 from config import SUDO_USERS
 
 
-@Client.on_message(filters.command(["userbotjoin"]) & ~filters.private & ~filters.bot)
+@Client.on_message(filters.command(["انضم"]) & ~filters.private & ~filters.bot)
 @authorized_users_only
 @errors
 async def addchannel(client, message):
@@ -43,7 +43,7 @@ async def addchannel(client, message):
     )
 
 
-@Client.on_message(filters.group & filters.command(["userbotleave"]))
+@Client.on_message(filters.group & filters.command(["غادر"]))
 @authorized_users_only
 async def rem(client, message):
     try:
