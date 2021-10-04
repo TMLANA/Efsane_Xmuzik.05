@@ -14,7 +14,7 @@ from callsmusic.queues import queues
 from config import BOT_USERNAME
 
 
-@Client.on_message(command(["reload", f"reload@{BOT_USERNAME}"]))
+@Client.on_message(command(["تحديث", f"reload@{BOT_USERNAME}"]))
 @authorized_users_only
 async def update_admin(client, message):
     global admins
@@ -23,10 +23,10 @@ async def update_admin(client, message):
     for u in new_ads:
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
-    await client.send_message(message.chat.id, "✅ Bot **başarıyla yeniden yüklendi!**\n\n• **Yöneticilerin listesi** zaten **Yenilendi !**")
+    await client.send_message(message.chat.id, "✅ تمت إعادة تثبيت الروبوت بنجاح!**")
 
 
-@Client.on_message(command(["pause", f"pause@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["ايقاف", f"pause@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def pause(_, message: Message):
@@ -34,13 +34,13 @@ async def pause(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "paused"
     ):
-        await message.reply_text("❎ **Şarkıyı çalmıyorum!**")
+        await message.reply_text("❎ **لا توجد اغنية مشغلة الان!**")
     else:
         callsmusic.pytgcalls.pause_stream(chat_id)
-        await message.reply_text("▶️ **Müzik duraklatıldı!**\n\n• Müzik kullanımına devam etmek için **komut» /resume**")
+        await message.reply_text("▶️ **لقد توقفت الاغنية**")
 
 
-@Client.on_message(command(["resume", f"resume@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["استمرار", f"resume@{BOT_USERNAME}"]) & other_filters)
 @errors
 @authorized_users_only
 async def resume(_, message: Message):
@@ -48,19 +48,19 @@ async def resume(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "playing"
     ):
-        await message.reply_text("❎ **Hiçbir müzik duraklatı yapılmadı.!**")
+        await message.reply_text("❎ **لا توجد موسيقى توقف مؤقتًا‌‌ı.!**")
     else:
         callsmusic.pytgcalls.resume_stream(chat_id)
-        await message.reply_text("⏸ **Müzik devam ediyor!**\n\n• Kullanımı duraklatmak için **komut » /pause**")
+        await message.reply_text("⏸ **لقد تم استمرار الاغنية المتوقفة**")
 
 
-@Client.on_message(command("end") & other_filters)
+@Client.on_message(command("انها۽") & other_filters)
 @errors
 @authorized_users_only
 async def stop(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❎ **Şarkıyı çalmıyorum!**")
+        await message.reply_text("❎ **لا توجد اغنية مشغلة الان!**")
     else:
         try:
             queues.clear(chat_id)
@@ -68,17 +68,17 @@ async def stop(_, message: Message):
             pass
 
         callsmusic.pytgcalls.leave_group_call(chat_id)
-        await message.reply_text("✅ **Müzik durduruldu!**\n\n• **Userbot'un sesli sohbet bağlantısı kesildi**")
+        await message.reply_text("✅ **تم انهاء الاغاني ونزول المساعد من الدردشه**")
 
 
-@Client.on_message(command("skip") & other_filters)
+@Client.on_message(command("تخطي") & other_filters)
 @errors
 @authorized_users_only
 async def skip(_, message: Message):
     global que
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❎ **Şarkıyı çalmıyorum!**")
+        await message.reply_text("❎ **لا توجد اغنية مشغلة الان!**")
     else:
         queues.task_done(chat_id)
 
@@ -94,7 +94,7 @@ async def skip(_, message: Message):
         skip = qeue.pop(0)
     if not qeue:
         return
-    await message.reply_text(f"⏭️ **__Şarkıyı bir sonraki kuyruğa atla__**")
+    await message.reply_text(f"⏭️ **__تخطي الأغنية إلى قائمة الانتظار التالية‌‌__**")
 
 
 @Client.on_message(filters.command("auth"))
